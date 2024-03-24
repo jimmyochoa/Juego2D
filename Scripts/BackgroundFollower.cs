@@ -1,25 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BackgroundFollower : MonoBehaviour
 {
-    
-    [SerializeField] private Vector2 velocityMovement;
-    private Vector2 offset;
-    private Material material;
+    [SerializeField] private Vector2 movementSpeed;
     private Rigidbody2D playerRigidbody;
-    // Start is called before the first frame update
-    void Awake()
+
+    private void Awake()
     {
-        material= GetComponent<SpriteRenderer>().material;
         playerRigidbody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        offset = (playerRigidbody.velocity * 0.1f) * velocityMovement * Time.deltaTime;
-        material.mainTextureOffset += offset;
+        if(playerRigidbody != null) {
+            Vector2 offset = playerRigidbody.velocity * movementSpeed * Time.deltaTime;
+
+            foreach(Transform child in transform) {
+                Renderer renderer = child.GetComponent<Renderer>();
+                if(renderer != null) {
+                    Material material = renderer.material;
+                    material.mainTextureOffset += offset;
+                }
+            }
+        }
     }
 }
