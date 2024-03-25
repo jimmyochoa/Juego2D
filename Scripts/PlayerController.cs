@@ -12,19 +12,12 @@ public class PlayerController : MonoBehaviour
     public Sprite[] walkingSprites;
     public Text gameOverText;
     public GameManager GameManager;
-    public GameObject[] heartSprites; // Arreglo de GameObjects para los sprites de corazón
 
     private SpriteRenderer mySpriteRenderer;
     private Rigidbody2D myRigidbody;
     private bool isGrounded = false;
     private bool canJump = true;
     private bool gameOver = false;
-    private int lives = 3; // Número de vidas inicial
-
-    public Sprite fullHeartSprite; // Sprite para la vida completa
-    public Sprite halfHeartSprite; // Sprite para la vida a la mitad
-    public Sprite emptyHeartSprite; // Sprite para la vida vacía
-
     private Vector3 initialPosition; // Posición inicial del jugador
 
     void Start()
@@ -33,7 +26,6 @@ public class PlayerController : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         StartCoroutine(ChangeSprite());
         gameOverText.enabled = false;
-        UpdateHeartSprites(); // Actualiza los sprites de los corazones
 
         // Guardar la posición inicial del jugador
         initialPosition = transform.position;
@@ -109,17 +101,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("DeathZone"))
         {
-            if (lives > 0)
-            {
-                LoseLife();
-                Debug.Log("Vidas restantes: " + lives);
-                // Reiniciar la posición del jugador
-                transform.position = initialPosition;
-            }
-            else
-            {
-                GameOver();
-            }
+            GameOver();
         }
         else if (collision.CompareTag("Money"))
         {
@@ -128,42 +110,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.CompareTag("ItemBad"))
         {
-            if (lives > 0)
-            {
-                LoseLife();
-            }
-            else
-            {
-                GameOver();
-            }
+            GameOver();
             Destroy(collision.gameObject);
-        }
-    }
-
-    void LoseLife()
-    {
-        lives--;
-        Debug.Log("Perdió una vida");
-        UpdateHeartSprites(); // Actualiza los sprites de los corazones
-    }
-
-    void UpdateHeartSprites()
-    {
-        for (int i = 0; i < heartSprites.Length; i++)
-        {
-            // Asigna los sprites adecuados según la cantidad de vidas restantes
-            if (i >= lives) // Vida vacía
-            {
-                heartSprites[i].GetComponent<SpriteRenderer>().sprite = emptyHeartSprite;
-            }
-            else if (i == lives - 1 && lives % 2 == 0) // Vida a la mitad
-            {
-                heartSprites[i].GetComponent<SpriteRenderer>().sprite = halfHeartSprite;
-            }
-            else // Vida completa
-            {
-                heartSprites[i].GetComponent<SpriteRenderer>().sprite = fullHeartSprite;
-            }
         }
     }
 
