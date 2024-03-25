@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ba2dfc2dda5544b5c95b4031d2899a2b
+guid: adb1d2c2188e6485eafcf8c85e37534e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Money_0
+      name: Pixel Heart Sprite Sheet 16x16_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 24
-        height: 24
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c0eb8b2dfece4c5e8f9e97d723a1b22
-      internalID: -570185589
+      spriteID: 2d407c52150f84efeb5d6a1cfc8583a5
+      internalID: 597619650
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Money_1
+      name: Pixel Heart Sprite Sheet 16x16_1
       rect:
         serializedVersion: 2
-        x: 24
+        x: 16
         y: 0
-        width: 24
-        height: 24
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0381769c71bd742c995df80b2143e857
-      internalID: 415188392
+      spriteID: cefffdbb259c84b029b75a1a95ca8023
+      internalID: -716291539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Money_2
+      name: Pixel Heart Sprite Sheet 16x16_2
       rect:
         serializedVersion: 2
-        x: 48
+        x: 32
         y: 0
-        width: 24
-        height: 24
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,71 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06996ab6bd2584656be78ac0e616178f
-      internalID: 249944795
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Money_3
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7df1f8a8053504ed9aea90f317b32038
-      internalID: -1635103569
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Money_4
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 466160c754b5341979df082af3d76d91
-      internalID: 869723325
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Money_5
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7cb2210adce7c40238b763c65e3432d8
-      internalID: 604951644
+      spriteID: 72676802c016848df9d32d1578584b6b
+      internalID: -1676966781
       vertices: []
       indices: 
       edges: []
@@ -246,12 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Money_0: -570185589
-      Money_1: 415188392
-      Money_2: 249944795
-      Money_3: -1635103569
-      Money_4: 869723325
-      Money_5: 604951644
+      Pixel Heart Sprite Sheet 16x16_0: 597619650
+      Pixel Heart Sprite Sheet 16x16_1: -716291539
+      Pixel Heart Sprite Sheet 16x16_2: -1676966781
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

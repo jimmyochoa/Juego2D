@@ -10,19 +10,43 @@ public class SpawnManager : MonoBehaviour
 
     private Transform playerTransform;
     private float lastGenerationTime;
+    private List<GameObject> platforms = new List<GameObject>(); // Lista para almacenar las plataformas generadas
+    private Vector3 lastPlayerPosition; // Última posición conocida del jugador
 
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // Encuentra al jugador
+        lastPlayerPosition = playerTransform.position;
         lastGenerationTime = Time.time;
     }
 
     void Update()
     {
+        // Verificar si el jugador se está moviendo
+        if (playerTransform.position == lastPlayerPosition)
+        {
+            return; // No generar plataformas si el jugador no se está moviendo
+        }
+        else
+        {
+            lastPlayerPosition = playerTransform.position;
+        }
+
         if (Time.time - lastGenerationTime > generationInterval)
         {
             GeneratePlatform();
             lastGenerationTime = Time.time;
+        }
+
+        // Eliminar las plataformas que están fuera de la vista de la cámara
+        for (int i = 0; i < platforms.Count; i++)
+        {
+            if (platforms[i] == null || platforms[i].transform.position.x < playerTransform.position.x - platformOffset)
+            {
+                Destroy(platforms[i]);
+                platforms.RemoveAt(i);
+                i--; // Necesario para evitar errores de índice fuera de rango
+            }
         }
     }
 
@@ -33,5 +57,7 @@ public class SpawnManager : MonoBehaviour
         
         // Mueve la plataforma al mismo nivel que el generador
         newPlatform.transform.position = new Vector3(newPlatform.transform.position.x, transform.position.y, transform.position.z);
+
+        platforms.Add(newPlatform); // Agrega la nueva plataforma a la lista
     }
 }
