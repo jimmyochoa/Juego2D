@@ -1,63 +1,82 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
     public float playerJumpForce = 20f;
     public float playerSpeed = 10f;
-    public float jumpAngle = 45f; // Ángulo de salto ajustable
+    public float jumpAngle = 45f;
     public float animationDuration = 0.5f;
     public Sprite[] walkingSprites;
+    public Text gameOverText;
+    public GameManager GameManager;
+    public GameObject[] heartSprites; // Arreglo de GameObjects para los sprites de corazón
 
     private SpriteRenderer mySpriteRenderer;
     private Rigidbody2D myRigidbody;
-    private BoxCollider2D myCollider;
-    private bool isGrounded = false; // Variable para verificar si el jugador está en el suelo
-    private bool canJump = true; // Variable para controlar si el jugador puede saltar
+    private bool isGrounded = false;
+    private bool canJump = true;
+    private bool gameOver = false;
+    private int lives = 3; // Número de vidas inicial
+
+    public Sprite fullHeartSprite; // Sprite para la vida completa
+    public Sprite halfHeartSprite; // Sprite para la vida a la mitad
+    public Sprite emptyHeartSprite; // Sprite para la vida vacía
+
+    private Vector3 initialPosition; // Posición inicial del jugador
 
     void Start()
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         myRigidbody = GetComponent<Rigidbody2D>();
-        myCollider = GetComponent<BoxCollider2D>();
         StartCoroutine(ChangeSprite());
+        gameOverText.enabled = false;
+        UpdateHeartSprites(); // Actualiza los sprites de los corazones
+
+        // Guardar la posición inicial del jugador
+        initialPosition = transform.position;
     }
 
     void Update()
     {
-        // Verificar si el jugador puede saltar (máximo dos saltos)
-        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || canJump))
+        if (!gameOver)
         {
-            Jump();
+            if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || canJump))
+            {
+                Jump();
+            }
+            myRigidbody.velocity = new Vector2(playerSpeed, myRigidbody.velocity.y);
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
 
-        // Siempre camina
-        myRigidbody.velocity = new Vector2(playerSpeed, myRigidbody.velocity.y);
+        // Recargar la escena si se presiona 'e'
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     void Jump()
     {
-        // Si está en el suelo o puede saltar, realizar el salto
-        if (isGrounded || canJump)
+        float jumpAngleInRadians = Mathf.Deg2Rad * jumpAngle;
+        float jumpForceX = playerJumpForce * Mathf.Cos(jumpAngleInRadians);
+        float jumpForceY = playerJumpForce * Mathf.Sin(jumpAngleInRadians);
+        myRigidbody.velocity = new Vector2(jumpForceX, jumpForceY);
+        if (isGrounded)
         {
-            // Calculamos las componentes horizontal y vertical de la fuerza del salto
-            float jumpAngleInRadians = Mathf.Deg2Rad * jumpAngle; // Convertimos el ángulo a radianes
-            float jumpForceX = playerJumpForce * Mathf.Cos(jumpAngleInRadians);
-            float jumpForceY = playerJumpForce * Mathf.Sin(jumpAngleInRadians);
-
-            // Aplicamos la fuerza del salto al Rigidbody
-            myRigidbody.velocity = new Vector2(jumpForceX, jumpForceY);
-
-            // Si está en el suelo, permitir un salto adicional
-            if (isGrounded)
-            {
-                canJump = true;
-            }
-            else
-            {
-                // Si no está en el suelo, indicar que ya no puede saltar adicionalmente
-                canJump = false;
-            }
+            canJump = true;
+        }
+        else
+        {
+            canJump = false;
         }
     }
 
@@ -84,5 +103,74 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("DeathZone"))
+        {
+            if (lives > 0)
+            {
+                LoseLife();
+                Debug.Log("Vidas restantes: " + lives);
+                // Reiniciar la posición del jugador
+                transform.position = initialPosition;
+            }
+            else
+            {
+                GameOver();
+            }
+        }
+        else if (collision.CompareTag("Money"))
+        {
+            GameManager.IncreaseScore();
+            Destroy(collision.gameObject);
+        }
+        else if (collision.CompareTag("ItemBad"))
+        {
+            if (lives > 0)
+            {
+                LoseLife();
+            }
+            else
+            {
+                GameOver();
+            }
+            Destroy(collision.gameObject);
+        }
+    }
+
+    void LoseLife()
+    {
+        lives--;
+        Debug.Log("Perdió una vida");
+        UpdateHeartSprites(); // Actualiza los sprites de los corazones
+    }
+
+    void UpdateHeartSprites()
+    {
+        for (int i = 0; i < heartSprites.Length; i++)
+        {
+            // Asigna los sprites adecuados según la cantidad de vidas restantes
+            if (i >= lives) // Vida vacía
+            {
+                heartSprites[i].GetComponent<SpriteRenderer>().sprite = emptyHeartSprite;
+            }
+            else if (i == lives - 1 && lives % 2 == 0) // Vida a la mitad
+            {
+                heartSprites[i].GetComponent<SpriteRenderer>().sprite = halfHeartSprite;
+            }
+            else // Vida completa
+            {
+                heartSprites[i].GetComponent<SpriteRenderer>().sprite = fullHeartSprite;
+            }
+        }
+    }
+
+    void GameOver()
+    {
+        gameOver = true;
+        gameOverText.enabled = true;
+        myRigidbody.velocity = Vector2.zero; // Detiene el movimiento del jugador cuando ocurre el Game Over
     }
 }
