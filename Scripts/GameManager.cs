@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,14 +20,27 @@ public class GameManager : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
+
     public void IncreaseScore()
     {
         score++;
         textScore.text = "Score: " + score;
     }
+    public void IncreaseLives()
+    {
+        currentHealth += 10;
+        healthBar.SetHealth(currentHealth);
+    }
+
 }

@@ -1,3 +1,4 @@
+// PlayerController.cs
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -11,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float animationDuration = 0.5f;
     public Sprite[] walkingSprites;
     public Text gameOverText;
-    public GameManager GameManager;
+    public GameManager gameManager;
 
     private SpriteRenderer mySpriteRenderer;
     private Rigidbody2D myRigidbody;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool canJump = true;
     private bool gameOver = false;
     private Vector3 initialPosition; // Posición inicial del jugador
+    public GameObject bulletPrefab;
 
     void Start()
     {
@@ -39,7 +41,12 @@ public class PlayerController : MonoBehaviour
             {
                 Jump();
             }
-            myRigidbody.velocity = new Vector2(playerSpeed, myRigidbody.velocity.y);
+
+            // Movimiento del jugador
+            if (!Input.GetKey(KeyCode.F))
+            {
+                myRigidbody.velocity = new Vector2(playerSpeed, myRigidbody.velocity.y);
+            }
         }
         else
         {
@@ -54,11 +61,17 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+        // Disparo de la bala
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ShootBullet();
+        }
     }
 
     void Jump()
     {
-        //Se calcula la fuerz tanto con respecto a y y la fuerza x, teniendo en cuenta el angulo de salto
+        // Cálculo de la fuerza de salto
         float jumpAngleInRadians = Mathf.Deg2Rad * jumpAngle;
         float jumpForceX = playerJumpForce * Mathf.Cos(jumpAngleInRadians);
         float jumpForceY = playerJumpForce * Mathf.Sin(jumpAngleInRadians);
@@ -102,18 +115,18 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("DeathZone"))
         {
-            //se resta toda la vida
-            GameManager.TakeDamage(GameManager.currentHealth);
+            // Se resta toda la vida
+            gameManager.TakeDamage(gameManager.currentHealth);
             GameOver();
         }
         else if (collision.CompareTag("Money"))
         {
-            GameManager.IncreaseScore();
+            gameManager.IncreaseScore();
             Destroy(collision.gameObject);
         }
         else if (collision.CompareTag("ItemBad"))
         {
-            GameManager.TakeDamage(15);
+            gameManager.TakeDamage(15);
             Destroy(collision.gameObject);
         }
     }
@@ -123,5 +136,21 @@ public class PlayerController : MonoBehaviour
         gameOver = true;
         gameOverText.enabled = true;
         myRigidbody.velocity = Vector2.zero; // Detiene el movimiento del jugador cuando ocurre el Game Over
+    }
+
+    void ShootBullet()
+    {
+        // Asegúrate de que el prefab de la bala esté asignado
+        if (bulletPrefab != null)
+        {
+            // Instanciamos la bala
+            GameObject bulletInstance = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+            // Aquí podrías realizar cualquier otra configuración necesaria para la bala, como asignar velocidad, etc.
+        }
+        else
+        {
+            Debug.LogError("Bullet prefab not assigned!");
+        }
     }
 }
