@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ba2dfc2dda5544b5c95b4031d2899a2b
+guid: 3f0998583fe624b438bfa87b82623a7f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Money_0
+      name: ezgif-2-86b454dee2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 24
-        height: 24
+        width: 1216
+        height: 1216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c0eb8b2dfece4c5e8f9e97d723a1b22
-      internalID: -570185589
+      spriteID: 43095a281b49240ffacb6a2b605a18c3
+      internalID: -2028479200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Money_1
+      name: ezgif-2-86b454dee2_1
       rect:
         serializedVersion: 2
-        x: 24
+        x: 1216
         y: 0
-        width: 24
-        height: 24
+        width: 1216
+        height: 1216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0381769c71bd742c995df80b2143e857
-      internalID: 415188392
+      spriteID: 24759fda5ac634410b42ab56634583e6
+      internalID: 199129681
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Money_2
+      name: ezgif-2-86b454dee2_2
       rect:
         serializedVersion: 2
-        x: 48
+        x: 2432
         y: 0
-        width: 24
-        height: 24
+        width: 1216
+        height: 1216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,71 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06996ab6bd2584656be78ac0e616178f
-      internalID: 249944795
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Money_3
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7df1f8a8053504ed9aea90f317b32038
-      internalID: -1635103569
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Money_4
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 466160c754b5341979df082af3d76d91
-      internalID: 869723325
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Money_5
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7cb2210adce7c40238b763c65e3432d8
-      internalID: 604951644
+      spriteID: 8987b77cd082546989991fe936997274
+      internalID: 357211382
       vertices: []
       indices: 
       edges: []
@@ -246,12 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Money_0: -570185589
-      Money_1: 415188392
-      Money_2: 249944795
-      Money_3: -1635103569
-      Money_4: 869723325
-      Money_5: 604951644
+      ezgif-2-86b454dee2_0: -2028479200
+      ezgif-2-86b454dee2_1: 199129681
+      ezgif-2-86b454dee2_2: 357211382
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
