@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
+        //Se calcula la fuerz tanto con respecto a y y la fuerza x, teniendo en cuenta el angulo de salto
         float jumpAngleInRadians = Mathf.Deg2Rad * jumpAngle;
         float jumpForceX = playerJumpForce * Mathf.Cos(jumpAngleInRadians);
         float jumpForceY = playerJumpForce * Mathf.Sin(jumpAngleInRadians);
@@ -101,6 +102,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("DeathZone"))
         {
+            //se resta toda la vida
+            GameManager.TakeDamage(GameManager.currentHealth);
             GameOver();
         }
         else if (collision.CompareTag("Money"))
@@ -110,7 +113,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.CompareTag("ItemBad"))
         {
-            GameOver();
+            GameManager.TakeDamage(15);
             Destroy(collision.gameObject);
         }
     }
