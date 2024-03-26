@@ -2964,6 +2964,8 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   healthBar: {fileID: 803852404}
+  relicPrefab: {fileID: 2145141611892667050, guid: 2646196964c3e41fc8f46f061984cea4, type: 3}
+  spawnPosition: {x: 13.9, y: 0, z: 0}
 --- !u!4 &1524416862
 Transform:
   m_ObjectHideFlags: 0
@@ -4169,9 +4171,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1524416861}
     - target: {fileID: 6266500350267310913, guid: b0245cbbc11ab4af1a49dfff7d8a089e, type: 3}
+      propertyPath: bulletSpeed
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266500350267310913, guid: b0245cbbc11ab4af1a49dfff7d8a089e, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1524416861}
+    - target: {fileID: 6266500350267310913, guid: b0245cbbc11ab4af1a49dfff7d8a089e, type: 3}
+      propertyPath: maxDistance
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978019716248870239, guid: b0245cbbc11ab4af1a49dfff7d8a089e, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 8978019716248870239, guid: b0245cbbc11ab4af1a49dfff7d8a089e, type: 3}
       propertyPath: m_Constraints
       value: 4
