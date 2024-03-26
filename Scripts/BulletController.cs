@@ -6,8 +6,8 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     private Rigidbody2D myRigidbody2D;
-    public float bulletSpeed = 10f;
-    public float maxDistance = 10f; // Distancia máxima que la bala puede viajar
+    public float bulletSpeed = 2000f;
+    public float maxDistance = 2000f; // Distancia máxima que la bala puede viajar
     private Vector2 initialPosition; // Posición inicial de la bala
     public GameManager gameManager; // Referencia al GameManager
 
@@ -19,15 +19,16 @@ public class BulletController : MonoBehaviour
 
     void Update()
     {
-        // Movemos la bala en la dirección especificada
-        myRigidbody2D.velocity = transform.right * bulletSpeed;
+        float step = bulletSpeed * Time.deltaTime; // Calcula la distancia que la bala debe moverse en este frame.
+        transform.position += transform.right * step; // Mueve la bala hacia adelante.
 
-        // Comprobamos si la bala ha viajado más allá de la distancia máxima
+        // Comprobación de la distancia máxima como antes.
         if (Vector2.Distance(initialPosition, transform.position) >= maxDistance)
         {
-            Destroy(gameObject); // Destruir la bala si ha alcanzado la distancia máxima
+            Destroy(gameObject); // Destruir la bala si ha alcanzado la distancia máxima.
         }
     }
+
 
 
     void OnTriggerEnter2D(Collider2D collision)

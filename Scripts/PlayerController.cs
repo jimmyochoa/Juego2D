@@ -129,6 +129,7 @@ public class PlayerController : MonoBehaviour
             gameManager.TakeDamage(15);
             Destroy(collision.gameObject);
         }
+        
     }
 
     void GameOver()
