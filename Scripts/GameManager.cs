@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("MainMenuScene");
         }
     }
 
