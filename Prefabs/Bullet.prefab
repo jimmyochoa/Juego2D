@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3925644939446379220}
   - component: {fileID: 2957892597131782707}
-  - component: {fileID: 6656139986412110096}
   - component: {fileID: 307082866033022260}
   - component: {fileID: 8978019716248870239}
   - component: {fileID: 6266500350267310913}
@@ -88,23 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6656139986412110096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2163597528111536837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 234825dccead146f1996d3b9c42007af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mySprites:
-  - {fileID: 21300000, guid: 6f0fb9b75ef7942a9a414303c3c33357, type: 3}
-  - {fileID: 21300000, guid: 245cb404e9d2a491185c0ff136cc5710, type: 3}
-  - {fileID: 21300000, guid: 463c278902abb415fa3a1e5027580263, type: 3}
-  - {fileID: 21300000, guid: ee46345a1eb15448bad48395d3974f8d, type: 3}
 --- !u!61 &307082866033022260
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -191,4 +173,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 10
   maxDistance: 10
-  GameManager: {fileID: 0}
+  gameManager: {fileID: 0}

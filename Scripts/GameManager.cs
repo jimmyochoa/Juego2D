@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameTimer()
     {
-        yield return new WaitForSeconds(10); // Espera 35 segundos
-        Instantiate(relicPrefab, spawnPosition, Quaternion.identity); // Instancia la reliquia
+        yield return new WaitForSeconds(60); // Espera 35 segundos
     }
 }

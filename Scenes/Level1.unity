@@ -3810,7 +3810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformPrefab: {fileID: 1535072629}
-  generationInterval: 60
+  generationInterval: 10
   platformOffset: 10
 --- !u!4 &2010854531
 Transform:

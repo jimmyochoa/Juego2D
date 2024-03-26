@@ -129,6 +129,11 @@ public class PlayerController : MonoBehaviour
             gameManager.TakeDamage(15);
             Destroy(collision.gameObject);
         }
+        else if(collision.CompareTag("FinalItem"))
+        {
+            //IR A NIVEL 2
+            SceneManager.LoadScene("Level2");
+        }
         
     }
 
